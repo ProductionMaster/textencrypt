@@ -4,7 +4,10 @@ import random
 app = Flask(__name__)
 
 # List of symbols to use in encryption
-symbols = ["\"", "'", "/", "&", "!", "@", "#", "$", "%", "^", "(", "*", ")", ",", ".", "|", "}", "{", " "]
+symbols = [
+    "\"", "'", "/", "&", "!", "@", "#", "$", "%", "^", "(", "*", ")", ",", ".",
+    "|", "}", "{", " "
+]
 
 # Function to generate a random symbol
 def GenRandomSymbol():
@@ -33,6 +36,7 @@ def Decode(encrypted_string):
         i += 1
     return "".join(decoded_string[::-1])  # Reverse the decoded string
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -46,6 +50,7 @@ def index():
             result = "Invalid action"
         return render_template('index.html', result=result)
     return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
